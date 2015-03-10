@@ -327,7 +327,7 @@ module Dnsruby
       time_now = Time.now
       timeouts={}
       @@mutex.synchronize {
-        timeouts = @@timeouts
+        timeouts = @@timeouts.clone
       }
       timeouts.each do |client_id, timeout|
         if (timeout < time_now)
